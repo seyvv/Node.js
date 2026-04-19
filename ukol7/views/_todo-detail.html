@@ -1,0 +1,41 @@
+<div class="label">Název úkolu</div>
+<h2>
+    <%= todo.title %>
+</h2>
+
+<div class="label">Priorita</div>
+<h2 class="badge priority-<%= todo.priority %>">
+    <%= todo.priority %>
+</h2>
+
+<div class="label">Stav</div>
+<% if (todo.done) { %>
+    <div class="status done">Hotové</div>
+    <% } else { %>
+        <div class="status not-done">Nehotové</div>
+        <% } %>
+
+            <div class="actions">
+                <% if (todo.done) { %>
+                    <a class="btn-link" href="/todos/<%= todo.id %>/toggle">Označit jako nehotové</a>
+                    <% } else { %>
+                        <a class="btn-link" href="/todos/<%= todo.id %>/toggle">Označit jako hotové</a>
+                        <% } %>
+
+                            <a class="btn-link btn-danger" href="/todos/<%= todo.id %>/remove">Odstranit
+                                todo</a>
+            </div>
+
+            <form method="post" action="/todos/<%= todo.id %>">
+                <label for="title">Změnit titulek</label>
+                <input id="title" name="title" value="<%= todo.title %>">
+
+                <label for="priority">Změnit prioritu</label>
+                <select id="priority" name="priority">
+                    <option value="low" <%=todo.priority==='low' ? 'selected' : '' %>>low</option>
+                    <option value="normal" <%=todo.priority==='normal' ? 'selected' : '' %>>normal</option>
+                    <option value="high" <%=todo.priority==='high' ? 'selected' : '' %>>high</option>
+                </select>
+
+                <button type="submit">Uložit změny</button>
+            </form>

@@ -1,0 +1,35 @@
+<% if (todos.length===0) { %>
+    <p class="empty">Zatím tu není žádné todo.</p>
+    <% } else { %>
+        <ul>
+            <% for (const todo of todos) { %>
+                <li>
+                    <div class="todo-left">
+                        <a class="todo-title" href="/todos/<%= todo.id %>">
+                            <%= todo.title %>
+                        </a>
+
+                        <% if (todo.done) { %>
+                            <span class="status done">Hotové</span>
+                            <% } else { %>
+                                <span class="status not-done">Nehotové</span>
+                                <% } %>
+
+                                    <span class="badge priority-<%= todo.priority %>">
+                                        Priorita: <%= todo.priority %>
+                                    </span>
+                    </div>
+
+                    <div class="actions">
+                        <% if (todo.done) { %>
+                            <a class="btn-link" href="/todos/<%= todo.id %>/toggle">Označit jako nehotové</a>
+                            <% } else { %>
+                                <a class="btn-link" href="/todos/<%= todo.id %>/toggle">Označit jako hotové</a>
+                                <% } %>
+
+                                    <a class="btn-link btn-danger" href="/todos/<%= todo.id %>/remove">Odebrat</a>
+                    </div>
+                </li>
+                <% } %>
+        </ul>
+        <% } %>
