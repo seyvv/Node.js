@@ -1,0 +1,25 @@
+{
+  "name": "ukol5",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Veronika Seyfriedová",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "ava"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.14",
+    "@hono/node-ws": "^1.3.0",
+    "@libsql/client": "^0.17.2",
+    "ava": "^8.0.0",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
+    "ejs": "^5.0.2",
+    "hono": "^4.12.12",
+    "supertest": "^7.2.2"
+  }
+}
